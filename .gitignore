@@ -4,3 +4,7 @@ node_modules
 
 # Ignore build files
 static
+
+
+.idea
+package-lock.json
