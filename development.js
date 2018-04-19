@@ -9,7 +9,7 @@ const config = require('./webpack.development.config.js');
 const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
-	publicPath: "/static/",
+	publicPath: "/dist/",
 }));
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler));
