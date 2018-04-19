@@ -21,7 +21,6 @@ module.exports = [
 		resolve: {
 			extensions: ['.js', '.jsx']
 		},
-		devtool: 'source-map',
 		module: {
 			rules: [
 				{
@@ -45,7 +44,7 @@ module.exports = [
 								modules: true,
 								importLoaders: 1,
 								localIdentName: '[hash:base64:10]',
-								sourceMap: true
+								sourceMap: false,
 							}
 						},
 						{
@@ -82,7 +81,6 @@ module.exports = [
 			libraryTarget: 'commonjs2',
 			publicPath: distDir,
 		},
-		devtool: 'source-map',
 		resolve: {
 			extensions: ['.js', '.jsx']
 		},
@@ -108,7 +106,7 @@ module.exports = [
 									modules: true,
 									importLoaders: 1,
 									localIdentName: '[hash:base64:10]',
-									sourceMap: true
+									sourceMap: false
 								}
 							},
 							{
