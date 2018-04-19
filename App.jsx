@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Helmet from "react-helmet";
 import {Switch, Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import homepageStyles from './homepage.scss';
+import homepageStyles from './src/pcss/homepage.scss';
 
 class Menu extends Component {
     render() {
