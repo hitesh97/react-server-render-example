@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use('/dist', express.static(path.join(__dirname, './dist')));
 const ClientStatsPath = path.join(__dirname, './dist/stats.json');
 const ServerRendererPath = path.join(__dirname, './dist/server.js');
 const ServerRenderer = require(ServerRendererPath).default;
