@@ -1,20 +1,22 @@
 const path = require('path');
-const dist = path.join(__dirname, 'dist');
 const webpack = require('webpack');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const distDir = path.join(__dirname, 'dist');
+const srcDir = path.join(__dirname);
+
 module.exports = [
 	{
 		name: 'client',
 		target: 'web',
-		entry: './client.jsx',
+		entry: `${srcDir}/client.jsx`,
 		output: {
-			path: path.join(__dirname, 'static'),
+			path: distDir,
 			filename: 'client.js',
-			publicPath: '/static/',
+			publicPath: distDir,
 		},
 		resolve: {
 			extensions: ['.js', '.jsx']
@@ -73,12 +75,12 @@ module.exports = [
 	{
 		name: 'server',
 		target: 'node',
-		entry: './server.jsx',
+		entry: `${srcDir}/server.jsx`,
 		output: {
-			path: path.join(__dirname, 'static'),
+			path: distDir,
 			filename: 'server.js',
 			libraryTarget: 'commonjs2',
-			publicPath: '/static/',
+			publicPath: distDir,
 		},
 		devtool: 'source-map',
 		resolve: {

@@ -3,7 +3,7 @@
 node_modules
 
 # Ignore build files
-static
+dist
 
 
 .idea
