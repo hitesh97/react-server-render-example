@@ -1,15 +1,18 @@
 const path = require('path');
 
+const distDir = path.join(__dirname, 'dist');
+const srcDir = path.join(__dirname);
+
 module.exports = [
 	{
 		name: 'client',
 		target: 'web',
-		entry: './client.jsx',
-		output: {
-			path: path.join(__dirname, 'static'),
-			filename: 'client.js',
-			publicPath: '/static/',
-		},
+        entry: `${srcDir}/client.jsx`,
+        output: {
+            path: distDir,
+            filename: 'client.js',
+            publicPath: distDir,
+        },
 		resolve: {
 			extensions: ['.js', '.jsx']
 		},
@@ -51,13 +54,13 @@ module.exports = [
 	{
 		name: 'server',
 		target: 'node',
-		entry: './server.jsx',
-		output: {
-			path: path.join(__dirname, 'static'),
-			filename: 'server.js',
-			libraryTarget: 'commonjs2',
-			publicPath: '/static/',
-		},
+        entry: `${srcDir}/server.jsx`,
+        output: {
+            path: distDir,
+            filename: 'server.js',
+            libraryTarget: 'commonjs2',
+            publicPath: distDir,
+        },
 		devtool: 'source-map',
 		resolve: {
 			extensions: ['.js', '.jsx']
