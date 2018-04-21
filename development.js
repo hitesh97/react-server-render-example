@@ -7,11 +7,23 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
 const config = require('./webpack.development.config.js');
 const compiler = webpack(config);
+const open = require('opn');
 
 app.use(webpackDevMiddleware(compiler, {
-	publicPath: "/dist/",
+    publicPath: "/dist/",
 }));
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler));
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, error => {
+    if (error) {
+        return console.error(error);
+    } else {
+        console.log(`Production Express server running at localhost: ${PORT}`);
+        setTimeout(() => {
+            open(`http://localhost:${PORT}`);
+        }, 10000);
+    }
+});

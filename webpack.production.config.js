@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const distDir = path.join(__dirname, 'dist');
 const srcDir = path.join(__dirname);
@@ -60,6 +60,7 @@ module.exports = [
 					NODE_ENV: '"production"'
 				}
 			}),
+            new CleanWebpackPlugin(distDir),
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
