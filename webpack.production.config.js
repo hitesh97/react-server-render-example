@@ -44,7 +44,7 @@ module.exports = [
 								modules: true,
 								importLoaders: 1,
 								localIdentName: '[hash:base64:10]',
-								sourceMap: false,
+								sourceMap: true,
 							}
 						},
 						{
@@ -107,7 +107,7 @@ module.exports = [
 									modules: true,
 									importLoaders: 1,
 									localIdentName: '[hash:base64:10]',
-									sourceMap: false
+									sourceMap: true
 								}
 							},
 							{
