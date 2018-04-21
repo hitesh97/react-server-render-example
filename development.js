@@ -24,6 +24,6 @@ app.listen(PORT, error => {
         console.log(`Production Express server running at localhost: ${PORT}`);
         setTimeout(() => {
             open(`http://localhost:${PORT}`);
-        }, 10000);
+        }, 13000);
     }
 });
