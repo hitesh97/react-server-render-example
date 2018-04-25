@@ -32,29 +32,33 @@ module.exports = [
 						}
 					]
 				},
-				{
-					test: /\.scss$/,
-					use: [
-						{
-							loader: 'style-loader',
-						},
-						{
-							loader: 'css-loader',
-							options: {
-								modules: true,
-								importLoaders: 1,
-								localIdentName: '[hash:base64:10]',
-								sourceMap: true,
-							}
-						},
-						{
-							loader: 'sass-loader'
-						}
-					]
-				}     
+                {
+                    test: /\.scss$/,
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: true,
+                                    importLoaders: 1,
+                                    localIdentName: '[hash:base64:10]',
+                                    sourceMap: false,
+                                }
+                            },
+                            {
+                                loader: 'sass-loader'
+                            }
+                        ]
+                    })
+                }
 			],
 		},
 		plugins: [
+            new ExtractTextPlugin({
+                filename: 'styles.css',
+                allChunks: true
+            }),
 			new webpack.DefinePlugin({
 				'process.env': {
 					NODE_ENV: '"production"'
@@ -107,7 +111,7 @@ module.exports = [
 									modules: true,
 									importLoaders: 1,
 									localIdentName: '[hash:base64:10]',
-									sourceMap: true
+									sourceMap: false,
 								}
 							},
 							{

@@ -78,6 +78,7 @@ export default class App extends Component {
                         {name: "description", content: "Server side rendering example"},
                         {name: "viewport", content: "width=device-width, initial-scale=1"},
                     ]}
+                    link={[{rel: "stylesheet", href: "/dist/styles.css"}]}
                 />
                 <Switch>
                     <Route exact path='/' component={Homepage}/>

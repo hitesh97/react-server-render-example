@@ -4,7 +4,7 @@ export default ({ markup, helmet }) => {
 				<head>
 					${helmet.title.toString()}
 					${helmet.meta.toString()}
-					${helmet.link.toString()}
+					${helmet.link.toString()}					
 				</head>
 				<body ${helmet.bodyAttributes.toString()}>
 					<div id="root">${markup}</div>
