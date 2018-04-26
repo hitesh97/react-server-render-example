@@ -7,7 +7,6 @@ const compiler = webpack(config);
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-const open = require('opn');
 
 app.use(webpackDevMiddleware(compiler, {
     publicPath: "/dist/",
@@ -21,9 +20,6 @@ app.listen(PORT, error => {
     if (error) {
         return console.error(error);
     } else {
-        console.log(`Production Express server running at localhost: ${PORT}`);
-        setTimeout(() => {
-            open(`http://localhost:${PORT}`);
-        }, 13000);
+        console.log(`Development Express server running at localhost: ${PORT}`);
     }
 });

@@ -100,33 +100,29 @@ module.exports = [
 						}
 					]
 				},
-				{
-					test: /\.scss$/,
-					use: ExtractTextPlugin.extract({
-						fallback: "isomorphic-style-loader",
-						use: [
-							{
-								loader: 'css-loader',
-								options: {
-									modules: true,
-									importLoaders: 1,
-									localIdentName: '[hash:base64:10]',
-									sourceMap: false,
-								}
-							},
-							{
-								loader: 'sass-loader'
-							}
-						]
-					})
-				}
+                {
+                    test: /\.scss$/,
+                    use: [
+                        {
+                            loader: 'isomorphic-style-loader',
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[hash:base64:10]',
+                                sourceMap: false
+                            }
+                        },
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ]
+                }
 			],
 		},
 		plugins: [
-			new ExtractTextPlugin({
-				filename: 'styles.css',
-				allChunks: true
-			}),
 			new OptimizeCssAssetsPlugin({
 				cssProcessorOptions: { discardComments: { removeAll: true } }
 			}),

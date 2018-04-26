@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const distDir = path.join(__dirname, 'dist');
 const srcDir = path.join(__dirname,'.');
@@ -28,28 +29,34 @@ module.exports = [
 						}
 					]
 				},
-				{
-					test: /\.scss$/,
-					use: [
-						{
-							loader: 'style-loader',
-						},
-						{
-							loader: 'css-loader',
-							options: {
-								modules: true,
-								importLoaders: 1,
-								localIdentName: '[local]',
-								sourceMap: true
-							}
-						},
-						{
-							loader: 'sass-loader'
-						}
-					]
-				}
+                {
+                    test: /\.scss$/,
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: true,
+                                    importLoaders: 1,
+                                    localIdentName: '[local]',
+                                    sourceMap: true,
+                                }
+                            },
+                            {
+                                loader: 'sass-loader'
+                            }
+                        ]
+                    })
+                },
 			],
 		},
+        plugins: [
+            new ExtractTextPlugin({
+                filename: 'styles.css',
+                allChunks: true
+            })
+		]
 	},
 	{
 		name: 'server',
@@ -95,7 +102,7 @@ module.exports = [
 							loader: 'sass-loader'
 						}
 					]
-				} 
+				}
 			],
 		},
 	}
