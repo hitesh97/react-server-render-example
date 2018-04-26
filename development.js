@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+/*const openBrowser = require('opn');*/
 const app = express();
 const webpack = require('webpack');
 const config = require('./webpack.development.config.js');
@@ -18,8 +19,14 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, error => {
     if (error) {
+
         return console.error(error);
+
     } else {
-        console.log(`Development Express server running at localhost: ${PORT}`);
+
+        console.log(`Development Express server running at http://localhost:${PORT}`);
+        /*compiler.plugin("done", () => {
+            openBrowser(`http://localhost:${PORT}`);
+        });*/
     }
 });

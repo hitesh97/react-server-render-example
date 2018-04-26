@@ -1,8 +1,8 @@
 %something {
-  border: 1px solid red;
+  border: 1px solid #ff6fc3;
 }
 
 * {
   @extend %something;
-  background: bisque;
+  background: #a4f3ff;
 }

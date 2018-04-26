@@ -68,7 +68,6 @@ module.exports = [
 			libraryTarget: 'commonjs2',
 			publicPath: '/dist/',
 		},
-		devtool: 'source-map',
 		resolve: {
 			extensions: ['.js', '.jsx']
 		},
@@ -95,7 +94,7 @@ module.exports = [
 								modules: true,
 								importLoaders: 1,
 								localIdentName: '[local]',
-								sourceMap: true
+								sourceMap: false
 							}
 						},
 						{
