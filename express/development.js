@@ -1,9 +1,8 @@
 const express = require('express');
 const path = require('path');
-/*const openBrowser = require('opn');*/
 const app = express();
 const webpack = require('webpack');
-const config = require('./webpack.development.config.js');
+const config = require('./../webpack/webpack.development.config.js');
 const compiler = webpack(config);
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -25,8 +24,5 @@ app.listen(PORT, error => {
     } else {
 
         console.log(`Development Express server running at http://localhost:${PORT}`);
-        /*compiler.plugin("done", () => {
-            openBrowser(`http://localhost:${PORT}`);
-        });*/
     }
 });

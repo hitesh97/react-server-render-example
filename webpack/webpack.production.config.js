@@ -5,8 +5,8 @@ const StatsPlugin = require('stats-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const distDir = path.join(__dirname, 'dist');
-const srcDir = path.join(__dirname, 'src');
+const distDir = path.join(__dirname, '../dist');
+const srcDir = path.join(__dirname, '../src');
 
 module.exports = [
     {

@@ -64,8 +64,8 @@ class Contact extends Component {
 
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
     }
 
     render = () => {
