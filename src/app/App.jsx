@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Helmet from "react-helmet";
 import {Switch, Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import styles from '../styles/styles.pcss';
 
 class Menu extends Component {
@@ -10,13 +10,13 @@ class Menu extends Component {
             <div>
                 <ul>
                     <li>
-                        <Link to={'/'}>Homepage</Link>
+                        <NavLink exact to={'/'} activeClassName={styles.active}>Homepage</NavLink>
                     </li>
                     <li>
-                        <Link to={'/about'}>About</Link>
+                        <NavLink activeClassName={styles.active} to={'/about'}>About</NavLink>
                     </li>
                     <li>
-                        <Link to={'/contact'}>Contact</Link>
+                        <NavLink activeClassName={styles.active} to={'/contact'}>Contact</NavLink>
                     </li>
                 </ul>
             </div>
@@ -83,8 +83,8 @@ export default class App extends Component {
                 />
                 <Switch>
                     <Route exact path='/' component={Homepage}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/contact" component={Contact}/>
+                    <Route path='/about' component={About}/>
+                    <Route path='/contact' component={Contact}/>
                 </Switch>
             </section>
         );
