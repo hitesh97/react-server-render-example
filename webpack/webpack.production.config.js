@@ -33,7 +33,7 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.pcss$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: [
@@ -47,7 +47,12 @@ module.exports = [
                                 }
                             },
                             {
-                                loader: 'sass-loader'
+                                loader: 'postcss-loader',
+                                options: {
+                                    config: {
+                                        path: `${__dirname}/../postcss/postcss.config.js`,
+                                    }
+                                }
                             }
                         ]
                     })
@@ -101,7 +106,7 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.pcss$/,
                     use: [
                         {
                             loader: 'isomorphic-style-loader',
@@ -116,7 +121,12 @@ module.exports = [
                             }
                         },
                         {
-                            loader: 'sass-loader'
+                            loader: 'postcss-loader',
+                            options: {
+                                config: {
+                                    path: `${__dirname}/../postcss/postcss.config.js`,
+                                }
+                            }
                         }
                     ]
                 }
