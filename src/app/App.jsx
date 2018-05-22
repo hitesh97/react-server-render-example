@@ -5,7 +5,7 @@ import {Link, NavLink} from 'react-router-dom';
 import styles from '../styles/styles.pcss';
 
 class Menu extends Component {
-    render = () => {
+    render() {
         return (
             <div>
                 <ul>
@@ -27,7 +27,7 @@ class Menu extends Component {
 
 class Homepage extends Component {
 
-    render = () => {
+    render () {
         return (
             <div className={styles.component}>
                 <Helmet title="Welcome to our Homepage"/>
@@ -39,7 +39,7 @@ class Homepage extends Component {
 }
 
 class About extends Component {
-    render = () => {
+    render () {
         return (
             <div>
                 <Helmet title="About us"/>
@@ -51,24 +51,21 @@ class About extends Component {
 }
 
 class Contact extends Component {
-    render = () => {
+    render () {
         return (
-            <section>
+            <div>
                 <Helmet title="Contact us"/>
                 <Menu/>
                 <h1>Contact</h1>
-            </section>
+            </div>
         );
     }
 }
 
 
 export default class App extends Component {
-    constructor() {
-        super();
-    }
 
-    render = () => {
+    render () {
         return (
             <section>
                 <Helmet
