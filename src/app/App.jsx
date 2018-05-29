@@ -67,7 +67,7 @@ export default class App extends Component {
 
     render () {
         return (
-            <section>
+            <div>
                 <Helmet
                     htmlAttributes={{lang: "en", amp: undefined}} // amp takes no value
                     titleTemplate="%s | React App"
@@ -83,7 +83,7 @@ export default class App extends Component {
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
                 </Switch>
-            </section>
+            </div>
         );
     }
 }
