@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development node ./express/development.js",
-    "build": "NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
-    "prod": "NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && node ./express/production.js",
-    "pm2": "NODE_ENV=production pm2 start ./express/production.js"
+    "dev": "cross-env NODE_ENV=development node ./express/development.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
+    "prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && node ./express/production.js",
+    "pm2": "cross-env NODE_ENV=production pm2 start ./express/production.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^5.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-helmet": "^5.2.0",
