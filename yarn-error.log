@@ -24,8 +24,7 @@ npm manifest:
       "dev": "cross-env NODE_ENV=development node ./express/development.js",
       "clean": "rm -rf dist",
       "build:prod": "npm run clean && cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
-      "build:start:prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && node ./express/production.js",
-      "pm2": "cross-env NODE_ENV=production pm2 start ./express/production.js"
+      "build:start:prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && SET PORT=8090 && node ./dist/express.js"
     },
     "author": "",
     "license": "ISC",
