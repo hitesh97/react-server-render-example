@@ -8,7 +8,11 @@ export default class Menu extends Component {
             <div>
                 <ul>
                     <li>
-                        <NavLink exact to={'/'} activeClassName={styles.active}>
+                        <NavLink
+                            exact
+                            to={'/'}
+                            activeClassName={`${styles.active}`}
+                        >
                             Homepage
                         </NavLink>
                     </li>

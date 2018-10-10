@@ -11,14 +11,10 @@ const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
 const webpackClientCompiler = compiler.compilers.find(
     compiler => compiler.name === 'client'
 );
-console.log('-----------------------------');
-console.log(webpackClientCompiler.options.output.publicPath);
-//console.log(webpackClientCompiler);
 
-console.log('-----------------------------');
 app.use(
     webpackDevMiddleware(compiler, {
-        publicPath: '/dist/'
+        publicPath: webpackClientCompiler.options.output.publicPath
     })
 );
 app.use(webpackHotMiddleware(webpackClientCompiler));

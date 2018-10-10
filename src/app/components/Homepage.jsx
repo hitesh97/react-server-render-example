@@ -10,6 +10,7 @@ export default class Homepage extends Component {
                 <Helmet title="Welcome to our Homepage" />
                 <Menu />
                 <h1>Homepage</h1>
+                <span>Hello</span>
             </div>
         );
     }

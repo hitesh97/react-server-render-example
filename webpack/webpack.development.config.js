@@ -1,14 +1,16 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const webpack = require('webpack');
 const outputDir = path.join(__dirname, '../dist/public');
 const srcDir = path.join(__dirname, '../src');
+var hotMiddlewareScript =
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=1500&reload=true';
 
 module.exports = [
     {
         name: 'client',
         target: 'web',
-        entry: `${srcDir}/client.jsx`,
+        entry: [hotMiddlewareScript, `${srcDir}/client.jsx`],
         output: {
             path: outputDir,
             filename: 'client.js',
@@ -57,9 +59,11 @@ module.exports = [
             ]
         },
         plugins: [
+            new webpack.HotModuleReplacementPlugin(),
             new ExtractTextPlugin({
                 filename: 'styles.css',
-                allChunks: true
+                allChunks: true,
+                disable: true
             })
         ]
     },
