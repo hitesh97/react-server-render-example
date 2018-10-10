@@ -6,8 +6,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const distDir = path.join(__dirname, '../dist');
-const publicDir = path.join(__dirname, '../dist/public');
+const mainOutDir = path.join(__dirname, '../dist');
+const outputDir = path.join(__dirname, '../dist/public');
 const srcDir = path.join(__dirname, '../src');
 
 module.exports = [
@@ -16,9 +16,9 @@ module.exports = [
         target: 'web',
         entry: `${srcDir}/client.jsx`,
         output: {
-            path: publicDir,
+            path: outputDir,
             filename: 'client.js',
-            publicPath: publicDir
+            publicPath: outputDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -71,7 +71,7 @@ module.exports = [
                     NODE_ENV: '"production"'
                 }
             }),
-            new CleanWebpackPlugin(distDir),
+            new CleanWebpackPlugin(mainOutDir),
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
                     warnings: false,
@@ -88,10 +88,10 @@ module.exports = [
         target: 'node',
         entry: `${srcDir}/server.jsx`,
         output: {
-            path: publicDir,
+            path: outputDir,
             filename: 'server.js',
             libraryTarget: 'commonjs2',
-            publicPath: publicDir
+            publicPath: outputDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -147,11 +147,11 @@ module.exports = [
             new CopyWebpackPlugin([
                 {
                     from: path.join(__dirname, '../package.json'),
-                    to: path.join(distDir, 'package.json')
+                    to: path.join(mainOutDir, 'package.json')
                 },
                 {
                     from: path.join(__dirname, '../express/production.js'),
-                    to: path.join(distDir, 'express.js')
+                    to: path.join(mainOutDir, 'express.js')
                 }
             ])
         ]

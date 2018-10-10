@@ -1,37 +1,10 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-import { Link, NavLink } from 'react-router-dom';
+
 import styles from '../styles/styles.pcss';
 
-class Menu extends Component {
-    render() {
-        return (
-            <div>
-                <ul>
-                    <li>
-                        <NavLink exact to={'/'} activeClassName={styles.active}>
-                            Homepage
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink activeClassName={styles.active} to={'/about'}>
-                            About
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            activeClassName={styles.active}
-                            to={'/contact'}
-                        >
-                            Contact
-                        </NavLink>
-                    </li>
-                </ul>
-            </div>
-        );
-    }
-}
+import Menu from './components/Menu';
 
 class Homepage extends Component {
     render() {
@@ -87,7 +60,7 @@ export default class App extends Component {
                             content: 'width=device-width, initial-scale=1'
                         }
                     ]}
-                    link={[{ rel: 'stylesheet', href: '/public/styles.css' }]}
+                    link={[{ rel: 'stylesheet', href: '/dist/styles.css' }]}
                 />
                 <Switch>
                     <Route exact path="/" component={Homepage} />

@@ -1,7 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const distDir = path.join(__dirname, '../dist');
+const outputDir = path.join(__dirname, '../dist/public');
 const srcDir = path.join(__dirname, '../src');
 
 module.exports = [
@@ -10,9 +10,9 @@ module.exports = [
         target: 'web',
         entry: `${srcDir}/client.jsx`,
         output: {
-            path: path.join(__dirname, 'dist'),
+            path: outputDir,
             filename: 'client.js',
-            publicPath: '/dist/',
+            publicPath: outputDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -25,7 +25,7 @@ module.exports = [
                     exclude: /(node_modules\/)/,
                     use: [
                         {
-                            loader: 'babel-loader',
+                            loader: 'babel-loader'
                         }
                     ]
                 },
@@ -40,21 +40,21 @@ module.exports = [
                                     modules: true,
                                     importLoaders: 1,
                                     localIdentName: '[local]',
-                                    sourceMap: true,
+                                    sourceMap: true
                                 }
                             },
                             {
                                 loader: 'postcss-loader',
                                 options: {
                                     config: {
-                                        path: `${__dirname}/../postcss/postcss.config.js`,
+                                        path: `${__dirname}/../postcss/postcss.config.js`
                                     }
                                 }
                             }
                         ]
                     })
-                },
-            ],
+                }
+            ]
         },
         plugins: [
             new ExtractTextPlugin({
@@ -68,10 +68,10 @@ module.exports = [
         target: 'node',
         entry: `${srcDir}/server.jsx`,
         output: {
-            path: path.join(__dirname, 'dist'),
+            path: outputDir,
             filename: 'server.js',
             libraryTarget: 'commonjs2',
-            publicPath: '/dist/',
+            publicPath: outputDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -83,7 +83,7 @@ module.exports = [
                     exclude: /(node_modules\/)/,
                     use: [
                         {
-                            loader: 'babel-loader',
+                            loader: 'babel-loader'
                         }
                     ]
                 },
@@ -91,7 +91,7 @@ module.exports = [
                     test: /\.pcss$/,
                     use: [
                         {
-                            loader: 'isomorphic-style-loader',
+                            loader: 'isomorphic-style-loader'
                         },
                         {
                             loader: 'css-loader',
@@ -106,13 +106,13 @@ module.exports = [
                             loader: 'postcss-loader',
                             options: {
                                 config: {
-                                    path: `${__dirname}/../postcss/postcss.config.js`,
+                                    path: `${__dirname}/../postcss/postcss.config.js`
                                 }
                             }
                         }
                     ]
                 }
-            ],
-        },
+            ]
+        }
     }
 ];
