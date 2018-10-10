@@ -2,45 +2,9 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-import styles from '../styles/styles.pcss';
-
-import Menu from './components/Menu';
-
-class Homepage extends Component {
-    render() {
-        return (
-            <div className={styles.component}>
-                <Helmet title="Welcome to our Homepage" />
-                <Menu />
-                <h1>Homepage</h1>
-            </div>
-        );
-    }
-}
-
-class About extends Component {
-    render() {
-        return (
-            <div>
-                <Helmet title="About us" />
-                <Menu />
-                <h1>About</h1>
-            </div>
-        );
-    }
-}
-
-class Contact extends Component {
-    render() {
-        return (
-            <div>
-                <Helmet title="Contact us" />
-                <Menu />
-                <h1>Contact</h1>
-            </div>
-        );
-    }
-}
+import Homepage from './components/Homepage';
+import About from './components/About';
+import Contact from './components/Contact';
 
 export default class App extends Component {
     render() {
