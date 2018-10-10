@@ -12,7 +12,7 @@ module.exports = [
         output: {
             path: outputDir,
             filename: 'client.js',
-            publicPath: outputDir
+            publicPath: '/dist/'
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -71,7 +71,7 @@ module.exports = [
             path: outputDir,
             filename: 'server.js',
             libraryTarget: 'commonjs2',
-            publicPath: outputDir
+            publicPath: '/dist/'
         },
         resolve: {
             extensions: ['.js', '.jsx']
