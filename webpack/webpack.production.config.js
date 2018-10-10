@@ -4,8 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const distDir = path.join(__dirname, '../dist');
+const publicDir = path.join(__dirname, '../dist/public');
 const srcDir = path.join(__dirname, '../src');
 
 module.exports = [
@@ -14,9 +16,9 @@ module.exports = [
         target: 'web',
         entry: `${srcDir}/client.jsx`,
         output: {
-            path: distDir,
+            path: publicDir,
             filename: 'client.js',
-            publicPath: distDir,
+            publicPath: publicDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -28,7 +30,7 @@ module.exports = [
                     exclude: /(node_modules\/)/,
                     use: [
                         {
-                            loader: 'babel-loader',
+                            loader: 'babel-loader'
                         }
                     ]
                 },
@@ -43,21 +45,21 @@ module.exports = [
                                     modules: true,
                                     importLoaders: 1,
                                     localIdentName: '[hash:base64:10]',
-                                    sourceMap: false,
+                                    sourceMap: false
                                 }
                             },
                             {
                                 loader: 'postcss-loader',
                                 options: {
                                     config: {
-                                        path: `${__dirname}/../postcss/postcss.config.js`,
+                                        path: `${__dirname}/../postcss/postcss.config.js`
                                     }
                                 }
                             }
                         ]
                     })
                 }
-            ],
+            ]
         },
         plugins: [
             new ExtractTextPlugin({
@@ -78,7 +80,7 @@ module.exports = [
                     drop_debugger: true
                 }
             }),
-            new webpack.optimize.OccurrenceOrderPlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin()
         ]
     },
     {
@@ -86,10 +88,10 @@ module.exports = [
         target: 'node',
         entry: `${srcDir}/server.jsx`,
         output: {
-            path: distDir,
+            path: publicDir,
             filename: 'server.js',
             libraryTarget: 'commonjs2',
-            publicPath: distDir,
+            publicPath: publicDir
         },
         resolve: {
             extensions: ['.js', '.jsx']
@@ -101,7 +103,7 @@ module.exports = [
                     exclude: /(node_modules\/)/,
                     use: [
                         {
-                            loader: 'babel-loader',
+                            loader: 'babel-loader'
                         }
                     ]
                 },
@@ -109,7 +111,7 @@ module.exports = [
                     test: /\.pcss$/,
                     use: [
                         {
-                            loader: 'isomorphic-style-loader',
+                            loader: 'isomorphic-style-loader'
                         },
                         {
                             loader: 'css-loader',
@@ -124,24 +126,34 @@ module.exports = [
                             loader: 'postcss-loader',
                             options: {
                                 config: {
-                                    path: `${__dirname}/../postcss/postcss.config.js`,
+                                    path: `${__dirname}/../postcss/postcss.config.js`
                                 }
                             }
                         }
                     ]
                 }
-            ],
+            ]
         },
         plugins: [
             new OptimizeCssAssetsPlugin({
-                cssProcessorOptions: {discardComments: {removeAll: true}}
+                cssProcessorOptions: { discardComments: { removeAll: true } }
             }),
             new StatsPlugin('stats.json', {
                 chunkModules: true,
                 modules: true,
                 chunks: true,
-                exclude: [/node_modules[\\\/]react/],
+                exclude: [/node_modules[\\\/]react/]
             }),
+            new CopyWebpackPlugin([
+                {
+                    from: path.join(__dirname, '../package.json'),
+                    to: path.join(distDir, 'package.json')
+                },
+                {
+                    from: path.join(__dirname, '../express/production.js'),
+                    to: path.join(distDir, 'express.js')
+                }
+            ])
         ]
     }
 ];

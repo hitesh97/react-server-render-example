@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development node ./express/development.js",
-    "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
-    "prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && node ./express/production.js",
+    "clean": "rm -rf dist",
+    "build:prod": "npm run clean && cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
+    "build:start:prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors && node ./express/production.js",
     "pm2": "cross-env NODE_ENV=production pm2 start ./express/production.js"
   },
   "author": "",
@@ -28,6 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.4",
     "css-mqpacker": "^6.0.2",
     "express": "^4.15.3",
